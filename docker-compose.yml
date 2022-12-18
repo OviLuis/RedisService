@@ -1,0 +1,20 @@
+# docker-compose.yml
+
+version: "3.4"
+services:
+  redis_store:
+    image: redis
+    container_name: producer_redis
+    hostname: redislocal
+    ports:
+      - "127.0.0.1:6379:6379"
+    command: --port 6379
+    expose:
+      - "6379"
+    networks:
+      - local-dev
+
+networks:
+  local-dev:
+    external: true
+
